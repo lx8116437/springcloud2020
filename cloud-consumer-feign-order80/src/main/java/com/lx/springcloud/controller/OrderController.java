@@ -16,7 +16,12 @@ public class OrderController {
     private PaymentFeignService paymentFeignService;
 
     @GetMapping(value = "consumer/payment/getPayment/{id}")
-    Result getPayment(@PathVariable("id") String id){
+    public Result getPayment(@PathVariable("id") String id){
         return paymentFeignService.getPayment(id);
+    }
+
+    @GetMapping(value = "consumer/payment/getTimeOut")
+    public String getTimeOut(){
+        return paymentFeignService.getTimeOut();
     }
 }
