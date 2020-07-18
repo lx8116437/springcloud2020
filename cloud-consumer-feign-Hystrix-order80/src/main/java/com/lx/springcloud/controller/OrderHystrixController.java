@@ -32,7 +32,7 @@ public class OrderHystrixController {
     @HystrixCommand
     public Result getPaymentInfo_TimeOut(@PathVariable("id") String id) throws InterruptedException{
         //系统异常 会调用通用服务降级 需要加上@HystrixCommand注解
-        int age = 10/0;
+//        int age = 10/0;
         Result r = paymentService.getPaymentInfo_TimeOut(id);
         return r;
     }

@@ -31,4 +31,11 @@ public class PaymentController {
         log.info("端口号:{} 返回值,result:{}",port,r);
         return r;
     }
+
+    @RequestMapping(value = "/hystrix/payment/getPaymentCircuitBreaker/{id}")
+    public Result getPaymentCircuitBreaker(@PathVariable("id")int id) throws Exception {
+        Result r = paymentService.getPaymentCircuitBreaker(id);
+        log.info("端口号:{} 返回值,result:{}",port,r);
+        return r;
+    }
 }
