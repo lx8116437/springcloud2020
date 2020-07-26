@@ -2,6 +2,7 @@ package com.lx.springcloud.controller;
 
 import com.lx.springcloud.entities.Result;
 import com.lx.springcloud.service.PaymentService;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,6 +27,7 @@ public class PaymentController {
     }
 
     @RequestMapping(value = "/hystrix/payment/getPaymentInfo_TimeOut/{id}")
+    @HystrixCommand
     public Result getPaymentInfo_TimeOut(@PathVariable("id")String id)throws InterruptedException{
         Result r = paymentService.getPaymentInfo_TimeOut(id);
         log.info("端口号:{} 返回值,result:{}",port,r);
